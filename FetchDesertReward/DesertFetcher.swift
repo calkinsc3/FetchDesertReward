@@ -41,6 +41,8 @@ final class DesertFetcher {
     
 
     // MARK: - Get Desert Details from API
+    
+    
 }
 
 
@@ -54,12 +56,24 @@ private extension DesertFetcher {
         
         components.scheme = MEAL_API.schema
         components.host = MEAL_API.host
-        components.path = MEAL_API.basepath
+        components.path = MEAL_API.desertPath
         
         return components
     
     }
     
+    func makeComponentsForDesertDetail(mailID id: String) -> URLComponents {
+        
+        var components = URLComponents()
+        
+        components.scheme = MEAL_API.schema
+        components.host = MEAL_API.host
+        components.path = MEAL_API.desertDetailPath
+        components.queryItems = [URLQueryItem(name: "i", value: id)]
+        
+        return components
+        
+    }
     
     
     
@@ -75,5 +89,7 @@ struct MEAL_API {
     
     static let desertPath = "/\(basepath)/filter.php?c=Dessert"
     static let desertDetailPath = "/\(basepath)/lookup.php"
+    
+    
 }
 
