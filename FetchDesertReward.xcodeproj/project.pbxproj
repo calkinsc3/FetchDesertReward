@@ -19,6 +19,8 @@
 		FA8D900F285CD450007E8FE8 /* DesertModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D900E285CD450007E8FE8 /* DesertModels.swift */; };
 		FA8D9012285CD48C007E8FE8 /* Deserts.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8D9010285CD48C007E8FE8 /* Deserts.json */; };
 		FA8D9013285CD48C007E8FE8 /* Meals.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8D9011285CD48C007E8FE8 /* Meals.json */; };
+		FA8D9015285CED15007E8FE8 /* DesertFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9014285CED15007E8FE8 /* DesertFetcher.swift */; };
+		FA8D9017285CF09F007E8FE8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9016285CF09F007E8FE8 /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		FA8D900E285CD450007E8FE8 /* DesertModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertModels.swift; sourceTree = "<group>"; };
 		FA8D9010285CD48C007E8FE8 /* Deserts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Deserts.json; sourceTree = "<group>"; };
 		FA8D9011285CD48C007E8FE8 /* Meals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Meals.json; sourceTree = "<group>"; };
+		FA8D9014285CED15007E8FE8 /* DesertFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertFetcher.swift; sourceTree = "<group>"; };
+		FA8D9016285CF09F007E8FE8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,8 @@
 				FA8D8FE9285CD3B1007E8FE8 /* LaunchScreen.storyboard */,
 				FA8D8FEC285CD3B1007E8FE8 /* Info.plist */,
 				FA8D900E285CD450007E8FE8 /* DesertModels.swift */,
+				FA8D9014285CED15007E8FE8 /* DesertFetcher.swift */,
+				FA8D9016285CF09F007E8FE8 /* Errors.swift */,
 			);
 			path = FetchDesertReward;
 			sourceTree = "<group>";
@@ -272,6 +278,8 @@
 				FA8D900F285CD450007E8FE8 /* DesertModels.swift in Sources */,
 				FA8D8FE3285CD3B1007E8FE8 /* ViewController.swift in Sources */,
 				FA8D8FDF285CD3B1007E8FE8 /* AppDelegate.swift in Sources */,
+				FA8D9015285CED15007E8FE8 /* DesertFetcher.swift in Sources */,
+				FA8D9017285CF09F007E8FE8 /* Errors.swift in Sources */,
 				FA8D8FE1285CD3B1007E8FE8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
