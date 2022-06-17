@@ -80,7 +80,6 @@
                                 <connections>
                                     <outlet property="desertImage" destination="1Ay-kh-2d7" id="xBQ-ez-Klt"/>
                                     <outlet property="desertName" destination="9Oa-vi-eh3" id="PfC-19-0CS"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="desertDetailsSegue" id="fM9-F1-1JK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -90,6 +89,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="S47-wl-nem"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="desertDetailsSegue" id="Fz3-CV-MLC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kw2-d1-fg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

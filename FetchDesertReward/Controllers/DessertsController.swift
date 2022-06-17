@@ -12,7 +12,7 @@ class DessertsController:  UITableViewController  {
     let desertViewModel = DessertsViewModel()
     
     private var deserts : [Meal] = []
-    private var selectedDessert: Meal?
+    private var selectedIndex: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class DessertsController:  UITableViewController  {
         Task {
             do {
                 let gatheredDeserts = try await self.desertViewModel.getDeserts()
-                self.deserts = gatheredDeserts.meals
+                self.deserts = gatheredDeserts.meals.sorted(by: {$0.strMeal < $1.strMeal})
                 tableView.reloadData()
             } catch {
                 Log.networkLogger.error("Unable to retrieve deserts from API")
@@ -63,20 +63,26 @@ class DessertsController:  UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
         
-        if self.deserts.indices.contains(indexPath.row) {
-            // FIXME: Index is wrong
-            self.selectedDessert = self.deserts[indexPath.row]
-        }
+        self.selectedIndex = indexPath
+        self.performSegue(withIdentifier: "desertDetailsSegue", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
 
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "desertDetailsSegue", let dessertDetailsVC = segue.destination as? ViewController {
-            // FIXME: wrong dessert is being sent
-            dessertDetailsVC.givenDessert = self.selectedDessert
+        
+        guard segue.identifier == "desertDetailsSegue",
+              let dessertDetailsVC = segue.destination as? ViewController,
+              let selectedIndex = self.selectedIndex else {
+            return
+        }
+        
+        if self.deserts.indices.contains(selectedIndex.row) {
+            dessertDetailsVC.givenDessert = self.deserts[selectedIndex.row]
+            self.selectedIndex = nil
         }
     }
     
