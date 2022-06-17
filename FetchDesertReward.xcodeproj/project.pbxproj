@@ -16,6 +16,9 @@
 		FA8D8FF6285CD3B2007E8FE8 /* FetchDesertRewardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D8FF5285CD3B2007E8FE8 /* FetchDesertRewardTests.swift */; };
 		FA8D9000285CD3B2007E8FE8 /* FetchDesertRewardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D8FFF285CD3B2007E8FE8 /* FetchDesertRewardUITests.swift */; };
 		FA8D9002285CD3B2007E8FE8 /* FetchDesertRewardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9001285CD3B2007E8FE8 /* FetchDesertRewardUITestsLaunchTests.swift */; };
+		FA8D900F285CD450007E8FE8 /* DesertModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D900E285CD450007E8FE8 /* DesertModels.swift */; };
+		FA8D9012285CD48C007E8FE8 /* Deserts.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8D9010285CD48C007E8FE8 /* Deserts.json */; };
+		FA8D9013285CD48C007E8FE8 /* Meals.json in Resources */ = {isa = PBXBuildFile; fileRef = FA8D9011285CD48C007E8FE8 /* Meals.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		FA8D8FFB285CD3B2007E8FE8 /* FetchDesertRewardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchDesertRewardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA8D8FFF285CD3B2007E8FE8 /* FetchDesertRewardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDesertRewardUITests.swift; sourceTree = "<group>"; };
 		FA8D9001285CD3B2007E8FE8 /* FetchDesertRewardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDesertRewardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA8D900E285CD450007E8FE8 /* DesertModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertModels.swift; sourceTree = "<group>"; };
+		FA8D9010285CD48C007E8FE8 /* Deserts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Deserts.json; sourceTree = "<group>"; };
+		FA8D9011285CD48C007E8FE8 /* Meals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Meals.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,7 @@
 				FA8D8FE7285CD3B1007E8FE8 /* Assets.xcassets */,
 				FA8D8FE9285CD3B1007E8FE8 /* LaunchScreen.storyboard */,
 				FA8D8FEC285CD3B1007E8FE8 /* Info.plist */,
+				FA8D900E285CD450007E8FE8 /* DesertModels.swift */,
 			);
 			path = FetchDesertReward;
 			sourceTree = "<group>";
@@ -113,6 +120,8 @@
 		FA8D8FF4285CD3B2007E8FE8 /* FetchDesertRewardTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA8D9010285CD48C007E8FE8 /* Deserts.json */,
+				FA8D9011285CD48C007E8FE8 /* Meals.json */,
 				FA8D8FF5285CD3B2007E8FE8 /* FetchDesertRewardTests.swift */,
 			);
 			path = FetchDesertRewardTests;
@@ -241,6 +250,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8D9013285CD48C007E8FE8 /* Meals.json in Resources */,
+				FA8D9012285CD48C007E8FE8 /* Deserts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8D900F285CD450007E8FE8 /* DesertModels.swift in Sources */,
 				FA8D8FE3285CD3B1007E8FE8 /* ViewController.swift in Sources */,
 				FA8D8FDF285CD3B1007E8FE8 /* AppDelegate.swift in Sources */,
 				FA8D8FE1285CD3B1007E8FE8 /* SceneDelegate.swift in Sources */,
