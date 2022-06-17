@@ -11,7 +11,8 @@ class DessertsController:  UITableViewController  {
     
     let desertViewModel = DessertsViewModel()
     
-    var deserts : [Meal] = []
+    private var deserts : [Meal] = []
+    private var selectedDessert: Meal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,24 @@ class DessertsController:  UITableViewController  {
         }
         
         return desertCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if self.deserts.indices.contains(indexPath.row) {
+            // FIXME: Index is wrong
+            self.selectedDessert = self.deserts[indexPath.row]
+        }
+
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "desertDetailsSegue", let dessertDetailsVC = segue.destination as? ViewController {
+            // FIXME: wrong dessert is being sent
+            dessertDetailsVC.givenDessert = self.selectedDessert
+        }
     }
     
 }
