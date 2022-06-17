@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class DesertFetcher {
+final class DessertFetcher {
     
     private var session: URLSession
     
@@ -19,7 +19,7 @@ final class DesertFetcher {
     }
     
     // MARK: - Get Deserts from API
-    func fetchDeserts() async throws -> Deserts {
+    func fetchDeserts() async throws -> Desserts {
         
         //assemble URL
         guard let url = self.makeComponentsForDesert().url else {
@@ -33,7 +33,7 @@ final class DesertFetcher {
         }
         
         do {
-            return try JSONDecoder().decode(Deserts.self, from: data)
+            return try JSONDecoder().decode(Desserts.self, from: data)
         } catch let error {
             throw DesertFetcherErrors.decoding(description: "Error decoding: \(error)")
         }
@@ -48,7 +48,7 @@ final class DesertFetcher {
 
 
 // MARK: - Endpoint Builder
-private extension DesertFetcher {
+private extension DessertFetcher {
     
     func makeComponentsForDesert() -> URLComponents {
         
@@ -57,6 +57,7 @@ private extension DesertFetcher {
         components.scheme = MEAL_API.schema
         components.host = MEAL_API.host
         components.path = MEAL_API.desertPath
+        components.queryItems = [URLQueryItem(name: "c", value: "Dessert")] //?c=Dessert
         
         return components
     
@@ -87,7 +88,7 @@ struct MEAL_API {
     static let version = "v1/1"
     static let basepath = "api/json/\(version)"
     
-    static let desertPath = "/\(basepath)/filter.php?c=Dessert"
+    static let desertPath = "/\(basepath)/filter.php"
     static let desertDetailPath = "/\(basepath)/lookup.php"
     
     

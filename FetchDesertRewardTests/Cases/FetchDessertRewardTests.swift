@@ -23,13 +23,13 @@ class FetchDesertRewardTests: XCTestCase {
     func testDesertModel() throws {
         
         // Test the desert model
-        guard let desertModelData = getMockData(forResource: "Deserts") else {
+        guard let desertModelData = getMockData(forResource: "Desserts") else {
             XCTFail("Count not find Deserts.json in the file bundle")
             return
         }
         //attempt to decode the data buffer into structured data
         do {
-            let desertModel = try jsonDecoder.decode(Deserts.self, from: desertModelData)
+            let desertModel = try jsonDecoder.decode(Desserts.self, from: desertModelData)
             XCTAssertTrue(desertModel.meals.count == 64, "DesertModel meals count should be 64")
             
         } catch {
