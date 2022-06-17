@@ -55,6 +55,39 @@ class FetchDesertRewardTests: XCTestCase {
             XCTFail("Failed to decode Meal Detail data: \(error)")
         }
         
+    }
+    
+    func testMealViewMaodelMapping() {
+        
+        // Test the meal detail data structure
+        guard let mealDetails = getMockData(forResource: "Meals") else {
+            XCTFail("Cannot find Meals.json in the file bundle.")
+            return
+        }
+        
+        do {
+            let mealModel = try jsonDecoder.decode(MealDetail.self, from: mealDetails)
+            if let ingredientsCount = mealModel.meals.first?.count {
+                XCTAssertTrue(ingredientsCount == 53, "The ingredients count should be 53")
+            }
+            
+            if let givenMeal = mealModel.meals.first {
+                let filteredIngredients = givenMeal.filter({$0.key.contains("strIngredient")})
+                                            .compactMap({$0.value}) //remove nil values
+                                            .filter({$0 != ""}) // remove empty strings
+                let filteredMesurements = givenMeal.filter({$0.key.contains("strMeasure")})
+                                            .compactMap({$0.value})
+                                            .filter({$0 != ""})
+                                            .filter({$0 != " "})
+                XCTAssertTrue(filteredIngredients.count == 9, "There should be 9 ingredients after filtering garbage.")
+                XCTAssertTrue(filteredMesurements.count == 9, "There should be 9 measurements after filtering garbage")
+        
+            }
+            
+            
+        } catch {
+            XCTFail("Failed to decode Meal Detail data: \(error)")
+        }
         
     }
     
