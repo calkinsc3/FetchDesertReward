@@ -111,14 +111,13 @@
 			children = (
 				FA8D8FDE285CD3B1007E8FE8 /* AppDelegate.swift */,
 				FA8D8FE0285CD3B1007E8FE8 /* SceneDelegate.swift */,
-				FA8D8FE2285CD3B1007E8FE8 /* ViewController.swift */,
-				FA8D8FE4285CD3B1007E8FE8 /* Main.storyboard */,
+				FA8D901A285D0171007E8FE8 /* Controllers */,
+				FA8D901B285D0184007E8FE8 /* Views */,
+				FA8D901C285D01A0007E8FE8 /* Models */,
+				FA8D901D285D01A9007E8FE8 /* Fetchers */,
+				FA8D901E285D01B9007E8FE8 /* Utils */,
 				FA8D8FE7285CD3B1007E8FE8 /* Assets.xcassets */,
-				FA8D8FE9285CD3B1007E8FE8 /* LaunchScreen.storyboard */,
 				FA8D8FEC285CD3B1007E8FE8 /* Info.plist */,
-				FA8D900E285CD450007E8FE8 /* DesertModels.swift */,
-				FA8D9014285CED15007E8FE8 /* DesertFetcher.swift */,
-				FA8D9016285CF09F007E8FE8 /* Errors.swift */,
 			);
 			path = FetchDesertReward;
 			sourceTree = "<group>";
@@ -126,9 +125,8 @@
 		FA8D8FF4285CD3B2007E8FE8 /* FetchDesertRewardTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA8D9010285CD48C007E8FE8 /* Deserts.json */,
-				FA8D9011285CD48C007E8FE8 /* Meals.json */,
-				FA8D8FF5285CD3B2007E8FE8 /* FetchDesertRewardTests.swift */,
+				FA8D9018285D011F007E8FE8 /* TestData */,
+				FA8D9019285D012F007E8FE8 /* Cases */,
 			);
 			path = FetchDesertRewardTests;
 			sourceTree = "<group>";
@@ -140,6 +138,64 @@
 				FA8D9001285CD3B2007E8FE8 /* FetchDesertRewardUITestsLaunchTests.swift */,
 			);
 			path = FetchDesertRewardUITests;
+			sourceTree = "<group>";
+		};
+		FA8D9018285D011F007E8FE8 /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D9010285CD48C007E8FE8 /* Deserts.json */,
+				FA8D9011285CD48C007E8FE8 /* Meals.json */,
+			);
+			path = TestData;
+			sourceTree = "<group>";
+		};
+		FA8D9019285D012F007E8FE8 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D8FF5285CD3B2007E8FE8 /* FetchDesertRewardTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		FA8D901A285D0171007E8FE8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D8FE2285CD3B1007E8FE8 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA8D901B285D0184007E8FE8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D8FE4285CD3B1007E8FE8 /* Main.storyboard */,
+				FA8D8FE9285CD3B1007E8FE8 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FA8D901C285D01A0007E8FE8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D900E285CD450007E8FE8 /* DesertModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FA8D901D285D01A9007E8FE8 /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D9014285CED15007E8FE8 /* DesertFetcher.swift */,
+			);
+			path = Fetchers;
+			sourceTree = "<group>";
+		};
+		FA8D901E285D01B9007E8FE8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA8D9016285CF09F007E8FE8 /* Errors.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
