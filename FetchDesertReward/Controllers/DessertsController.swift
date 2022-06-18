@@ -22,7 +22,7 @@ class DessertsController:  UITableViewController  {
     }
     
     // MARK: - Helpers
-    private func gatherDeserts() { // TODO: May need to replace with a closure
+    private func gatherDeserts() {
         Task {
             do {
                 let gatheredDeserts = try await self.desertViewModel.getDeserts()
@@ -37,13 +37,10 @@ class DessertsController:  UITableViewController  {
     
     // MARK: - TableView
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //return self.desertViewModel.placeHolderDeserts.meals.count
         return self.deserts.count
     }
     

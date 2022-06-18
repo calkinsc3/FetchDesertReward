@@ -9,9 +9,6 @@ import Foundation
 
 final class DessertsViewModel {
     
-    var deserts = Desserts.desertPlaceHolder
-    var placeHolderDeserts = Desserts.desertPlaceHolder
-    
     func getDeserts() async throws -> Desserts {
         let desertFetcher = DessertFetcher()
         do {
