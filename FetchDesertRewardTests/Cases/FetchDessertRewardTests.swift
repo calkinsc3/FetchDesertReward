@@ -71,6 +71,22 @@ class FetchDesertRewardTests: XCTestCase {
                 XCTAssertTrue(ingredientsCount == 53, "The ingredients count should be 53")
             }
             
+            
+            // MARK: Test meal name
+            if let mealName = mealModel.mealName {
+                XCTAssertTrue(mealName == "Apam balik", "Meal name comp prop should be Apam balik")
+            } else {
+                XCTFail("Could not unwrap mealName")
+            }
+            
+            // MARK: Test meal instructions
+            if let mealInstructions = mealModel.mealInstruction {
+                XCTAssertTrue(!mealInstructions.isEmpty, "Meal instructions comp prop should not be empty")
+            } else {
+                XCTFail("Could not unwrap mealInstructions")
+            }
+            
+            // MARK: Test Ingredients
             if let givenMeal = mealModel.meals.first {
                 let filteredIngredients = givenMeal.filter({$0.key.contains("strIngredient")})
                                             .sorted(by: {$0.key < $1.key})
@@ -81,6 +97,7 @@ class FetchDesertRewardTests: XCTestCase {
                                             .compactMap({$0.value})
                                             .filter({$0 != ""})
                                             .filter({$0 != " "})
+                
                 XCTAssertTrue(filteredIngredients.count == 9, "There should be 9 ingredients after filtering garbage.")
                 XCTAssertTrue(filteredMesurements.count == 9, "There should be 9 measurements after filtering garbage")
                 
@@ -88,20 +105,16 @@ class FetchDesertRewardTests: XCTestCase {
                 let ingredientDict = Dictionary(uniqueKeysWithValues: zip(filteredIngredients, filteredMesurements))
 
                 //move dict into data structure
-                let completeInstructions = ingredientDict.map({IngredientViewModel(name: $0.key, quantity: $0.value)})
+                let completeInstructions = ingredientDict.map({MealIngredients(name: $0.key, quantity: $0.value)})
                 
                 XCTAssertTrue(completeInstructions.count == 9, "The complete instructions should be 9")
                 
-                //This did not pass because the order of the array is undefined
-//                if let firstInstruction = completeInstructions.first {
-//                    XCTAssertTrue(firstInstruction.name == "Milk", "The first associated instruction should have the name Milk")
-//                    XCTAssertTrue(firstInstruction.quantity == "200ml", "The first associated instruction quantity should be 200ml")
-//                }
-                
                 //This passes inconsistently because arrays are not ordered
-                if let milkIngredient = completeInstructions.first(where: {$0.name == "Sugar"}) {
-                    XCTAssertTrue(milkIngredient.quantity == "45g", "The Surgar associated instruction quantity should be 45g")
+                if let sugarIngredient = completeInstructions.first(where: {$0.name == "Sugar"}) {
+                    XCTAssertTrue(sugarIngredient.quantity == "45g", "The Surgar associated instruction quantity should be 45g")
                 }
+                
+                
                 
             }
             

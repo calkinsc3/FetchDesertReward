@@ -18,5 +18,6 @@ struct Log {
     static let networkLogger = Logger(subsystem: subsystem, category: "network")
     static let viewLogger = Logger(subsystem: subsystem, category: "views")
     static let viewModelLogger = Logger(subsystem: subsystem, category: "viewModels")
+    static let modelLogger = Logger(subsystem: subsystem, category: "models")
     static let unknownErrorLogger = Logger(subsystem: subsystem, category: "unknown")
 }
