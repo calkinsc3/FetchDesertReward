@@ -46,26 +46,38 @@ struct MealDetail: Decodable {
     var mealName: String? {
         
         guard let givenMeal = self.meals.first, let mealName = givenMeal["strMeal"] else {
-            Log.modelLogger.info("Unable to unwrap meal details or get meal name.")
+            Log.modelLogger.debug("Unable to unwrap meal details or get meal name.")
             return nil
         }
         
         return mealName ?? nil
     }
     
-    var mealInstruction: String? { // TODO: Possilby make an array
+    var mealInstruction: String? {
         
         guard let givenMeal = self.meals.first,
                 let mealInstruction = givenMeal["strInstructions"] else {
-            Log.modelLogger.info("Unable to unwrap meail or get meal instructions")
+            Log.modelLogger.debug("Unable to unwrap meal or get meal instructions")
             return nil
         }
         
         return mealInstruction ?? nil
     }
     
+    var mealInstructionsList: [String]? {
+        
+        guard let givenMealInstructions = self.mealInstruction else {
+            Log.modelLogger.debug("Unable to unwrap meal instructions")
+            return nil
+        }
+        
+        // Need to convert subSequence array to an array of strings for return
+        return givenMealInstructions.split(whereSeparator: \.isNewline).map({String($0)})
+        
+    }
     
-    var completeInstructions: [MealIngredients]? {
+    
+    var mealIngredients: [MealIngredients]? {
         
         guard let givenMeal = self.meals.first else {
             Log.viewModelLogger.info("Unable to unwrap meal details.")
