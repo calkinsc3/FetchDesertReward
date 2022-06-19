@@ -29,19 +29,38 @@ final class DessertFetcher {
         let (data, response) = try await self.session.data(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw DesertFetcherErrors.apiError(description: "Returned a non-200")
+            throw DesertFetcherErrors.apiError(description: "Desert returned a non-200")
         }
         
         do {
             return try JSONDecoder().decode(Desserts.self, from: data)
         } catch let error {
-            throw DesertFetcherErrors.decoding(description: "Error decoding: \(error)")
+            throw DesertFetcherErrors.decoding(description: "Error decoding dessert return: \(error)")
         }
     }
     
 
     // MARK: - Get Desert Details from API
-    
+    func fetchDesertDetails(withMealId mealId: String) async throws -> MealDetail {
+        
+        //assemble URL
+        guard let url = self.makeComponentsForDesertDetail(mailID: mealId).url else {
+            throw DesertFetcherErrors.urlError(description: "Could not assemble URL for Desert Details")
+        }
+        
+        let (data, response) = try await self.session.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw DesertFetcherErrors.apiError(description: "Meal details returned a non-200")
+        }
+        
+        do {
+            return try JSONDecoder().decode(MealDetail.self, from: data)
+        } catch let error {
+            throw DesertFetcherErrors.decoding(description: "Error decoding meal details data: \(error)")
+        }
+        
+    }
     
 }
 

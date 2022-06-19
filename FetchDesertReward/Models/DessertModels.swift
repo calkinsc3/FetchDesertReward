@@ -96,40 +96,44 @@ struct MealDetail: Decodable {
                                     .filter({$0 != ""})
                                     .filter({$0 != " "})
         
-        // TODO: Check counts?
-        //zip both sorted arrays into an associated dictionary
-        let completeInstructions = Dictionary(uniqueKeysWithValues: zip(filteredIngredients, filteredMesurements))
+        // FIXME: Beaver Trail Issue
+        // some of the ingredients are not unique
+        // make them Sets to drop dups
+        // if they do not match return nil
         
-        //map associated dictionary into structured model objects
-        return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)})
+        let uniqueIngredients = Set(filteredIngredients)
+        let uniqueMeasures = Set(filteredMesurements)
+        
+        if uniqueIngredients.count == uniqueMeasures.count {
+            let completeInstructions = Dictionary(uniqueKeysWithValues: zip(uniqueIngredients, uniqueMeasures))
+            
+            //map associated dictionary into structured model objects
+            return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)})
+        } else {
+            return nil
+        }
+        
         
     }
-}
-
-// MARK: - MealViewModel
-//clean up the return from MealDetail into a better structure
-struct MealViewModel {
-    let meallID: Int
-    let name: String
-    let drinkAlternative: String?
-    let category: String
-    let instructions: String // TODO: Make structured data
-    let thumbNail: URL?
-    let giveTags: String? //strcutred data?
-    let youTubeLink: URL?
-    let ingredientList: [String]
-    let measurementList: [String]
-    let mealSource: URL?
-    let mealImageSource: URL?
-    let dataModified: Date?
     
-    var ingredients: [MealIngredients] {
-        self.ingredientList.map({MealIngredients(name: $0, quantity: "")})
+    var mealIngrients: String? {
+        
+        guard let givenIngredients = self.mealIngredients else {
+            Log.viewModelLogger.info("Unable to unwrap meal details.")
+            return nil
+        }
+        
+        return givenIngredients.map({$0.description}).joined(separator: "\n")
     }
 }
 
-struct MealIngredients {
+
+struct MealIngredients: CustomStringConvertible {
     let name: String
     let quantity: String
+    
+    var description: String {
+        "\(name) : \(quantity)"
+    }
 }
 
