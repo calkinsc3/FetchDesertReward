@@ -57,7 +57,7 @@ class FetchDesertRewardTests: XCTestCase {
         
     }
     
-    func testMealViewMaodelMapping() {
+    func testMealViewModelMapping() {
         
         // Test the meal detail data structure
         guard let mealDetails = getMockData(forResource: "Meals") else {
@@ -114,8 +114,10 @@ class FetchDesertRewardTests: XCTestCase {
                     XCTAssertTrue(sugarIngredient.quantity == "45g", "The Surgar associated instruction quantity should be 45g")
                 }
                 
-                
-                
+                // MARK: Test Meal Ingredients
+                if let givenIngredients = mealModel.mealIngredients {
+                    XCTAssertTrue(givenIngredients.count == 9, "There should be 9 ingredients in the mealIngredients prop")
+                }
             }
             
             

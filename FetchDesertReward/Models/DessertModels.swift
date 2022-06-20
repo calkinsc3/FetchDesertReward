@@ -39,6 +39,7 @@ struct Meal: Decodable {
 
 // MARK: - MealDetail
 struct MealDetail: Decodable {
+    
     let meals: [[String: String?]]
     
     
@@ -100,16 +101,16 @@ struct MealDetail: Decodable {
         // some of the ingredients are not unique
         // make them Sets to drop dups
         // if they do not match return nil
-        
         let uniqueIngredients = Set(filteredIngredients)
         let uniqueMeasures = Set(filteredMesurements)
         
-        if uniqueIngredients.count == uniqueMeasures.count {
-            let completeInstructions = Dictionary(uniqueKeysWithValues: zip(uniqueIngredients, uniqueMeasures))
+        if filteredIngredients.count == uniqueIngredients.count && uniqueMeasures.count == filteredMesurements.count {
+            let completeInstructions = Dictionary(uniqueKeysWithValues: zip(filteredIngredients, filteredMesurements))
             
             //map associated dictionary into structured model objects
-            return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)})
+            return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)}).sorted(by: {$0.name < $1.name})
         } else {
+            // TODO: find dups 
             return nil
         }
         
