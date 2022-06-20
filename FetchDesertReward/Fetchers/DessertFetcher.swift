@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 final class DessertFetcher {
@@ -59,6 +60,23 @@ final class DessertFetcher {
         } catch let error {
             throw DesertFetcherErrors.decoding(description: "Error decoding meal details data: \(error)")
         }
+        
+    }
+    
+    // MARK: Gather Desert Image
+    func getDesertImage(imageURL url: URL) async throws -> UIImage {
+        
+        let (data, response) = try await self.session.data(from: url)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw DesertFetcherErrors.apiError(description: "Dessert Image URL retured a non-200 value")
+        }
+        
+        guard let givenImage = UIImage(data: data) else {
+            throw DesertFetcherErrors.apiError(description: "Data from Dessert Image could not be converted to UIImage")
+        }
+        
+        return givenImage
         
     }
     

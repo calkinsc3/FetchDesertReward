@@ -17,6 +17,9 @@ class DessertsController:  UITableViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.estimatedRowHeight = 60.0
+        self.tableView.rowHeight = UITableView.automaticDimension
+        
         self.gatherDeserts()
         
     }
@@ -54,6 +57,9 @@ class DessertsController:  UITableViewController  {
         //desertCell.desertName.text = self.desertViewModel.deserts.meals[indexPath.row].strMeal
         if self.deserts.indices.contains(indexPath.row) { //protect the subscript
             desertCell.desertName.text = self.deserts[indexPath.row].strMeal
+            if let imageURL = URL(string: self.deserts[indexPath.row].strMealThumb) {
+                desertCell.imageURL = imageURL
+            }
         }
         
         return desertCell

@@ -191,26 +191,33 @@
                                     <rect key="frame" x="0.0" y="0.0" width="385.5" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BananaPancakes" translatesAutoresizingMaskIntoConstraints="NO" id="1Ay-kh-2d7">
-                                            <rect key="frame" x="20" y="5" width="50" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="E6g-a7-sS6"/>
-                                                <constraint firstAttribute="width" constant="50" id="rKi-fT-hIz"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Oa-vi-eh3">
-                                            <rect key="frame" x="100" y="19.5" width="257.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="h2K-1E-WMM">
+                                            <rect key="frame" x="10" y="5" width="370.5" height="50"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BananaPancakes" translatesAutoresizingMaskIntoConstraints="NO" id="1Ay-kh-2d7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="H7I-hN-pdm"/>
+                                                        <constraint firstAttribute="width" constant="50" id="pHt-gc-Iny"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desert Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Oa-vi-eh3">
+                                                    <rect key="frame" x="70" y="15" width="300.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="9Oa-vi-eh3" firstAttribute="centerY" secondItem="T2l-cL-iXo" secondAttribute="centerY" id="ATO-5w-2xk"/>
-                                        <constraint firstItem="9Oa-vi-eh3" firstAttribute="leading" secondItem="1Ay-kh-2d7" secondAttribute="trailing" constant="30" id="AzB-Wf-kQC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="9Oa-vi-eh3" secondAttribute="trailing" constant="20" id="IJO-y1-5kx"/>
-                                        <constraint firstItem="1Ay-kh-2d7" firstAttribute="leading" secondItem="T2l-cL-iXo" secondAttribute="leading" constant="20" id="uBC-An-H3S"/>
-                                        <constraint firstItem="1Ay-kh-2d7" firstAttribute="centerY" secondItem="T2l-cL-iXo" secondAttribute="centerY" id="zBU-QI-mV0"/>
+                                        <constraint firstAttribute="bottom" secondItem="h2K-1E-WMM" secondAttribute="bottom" constant="5" id="2Eh-4G-Paf"/>
+                                        <constraint firstItem="h2K-1E-WMM" firstAttribute="top" secondItem="T2l-cL-iXo" secondAttribute="top" constant="5" id="LG0-uo-bWP"/>
+                                        <constraint firstAttribute="bottom" secondItem="h2K-1E-WMM" secondAttribute="bottom" constant="5" id="SCm-7F-jbE"/>
+                                        <constraint firstItem="h2K-1E-WMM" firstAttribute="top" secondItem="T2l-cL-iXo" secondAttribute="top" constant="5" id="Z76-mV-Zv0"/>
+                                        <constraint firstAttribute="trailing" secondItem="h2K-1E-WMM" secondAttribute="trailing" constant="5" id="ge7-ov-WtU"/>
+                                        <constraint firstAttribute="trailing" secondItem="h2K-1E-WMM" secondAttribute="trailing" constant="5" id="i2d-ny-bNw"/>
+                                        <constraint firstItem="h2K-1E-WMM" firstAttribute="leading" secondItem="T2l-cL-iXo" secondAttribute="leading" constant="10" id="wKk-bd-JUW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
