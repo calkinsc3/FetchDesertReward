@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="dsa-Vk-21u">
-                                <rect key="frame" x="18" y="108" width="378" height="355"/>
+                                <rect key="frame" x="18" y="108" width="378" height="317"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BananaPancakes" translatesAutoresizingMaskIntoConstraints="NO" id="Sus-wE-WsM">
                                         <rect key="frame" x="89" y="0.0" width="200" height="200"/>
@@ -32,18 +32,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIf-Sh-999">
-                                        <rect key="frame" x="144" y="286" width="90" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXk-0x-Cii">
-                                        <rect key="frame" x="146.5" y="334.5" width="85.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-hv-g5B">
+                                        <rect key="frame" x="139" y="286" width="100.5" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Instructions"/>
+                                        <connections>
+                                            <action selector="showInstrucitons:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kFf-D9-cbt"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOM-Qb-egd">
+                                        <rect key="frame" x="141" y="317" width="96.5" height="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Ingredients"/>
+                                        <connections>
+                                            <action selector="showIngredients:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oWO-6c-vvX"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -58,13 +62,118 @@
                     <navigationItem key="navigationItem" id="YBJ-cu-PeB"/>
                     <connections>
                         <outlet property="dessertName" destination="ne3-FP-nDY" id="Weg-vp-quq"/>
-                        <outlet property="ingredients" destination="WXk-0x-Cii" id="VcV-lC-o5g"/>
-                        <outlet property="instructions" destination="nIf-Sh-999" id="raG-tY-Qfh"/>
+                        <outlet property="ingredientsButton" destination="LOM-Qb-egd" id="fdb-sd-hyw"/>
+                        <segue destination="qO3-fx-Sks" kind="show" identifier="instructionsSegue" id="DP0-7s-nlx"/>
+                        <segue destination="9M0-sM-Xbn" kind="show" identifier="ingredientsSegue" id="kzk-sB-YZn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1927.5362318840582" y="837.72321428571422"/>
+        </scene>
+        <!--Ingredient List-->
+        <scene sceneID="Poy-o8-QQW">
+            <objects>
+                <tableViewController id="9M0-sM-Xbn" customClass="IngredientList" customModule="FetchDesertReward" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yGE-RN-wcJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientCell" rowHeight="60" id="M2v-G5-RzZ" customClass="IngredientCell" customModule="FetchDesertReward" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M2v-G5-RzZ" id="VTv-kV-D6v">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="ytH-hB-FXR">
+                                            <rect key="frame" x="28" y="19" width="358" height="22"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M12-9d-ETf">
+                                                    <rect key="frame" x="0.0" y="0.0" width="162" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pph-30-Jh0">
+                                                    <rect key="frame" x="196" y="0.0" width="162" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="ytH-hB-FXR" secondAttribute="bottom" constant="8" id="10s-pS-V0h"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ytH-hB-FXR" secondAttribute="trailing" constant="8" id="3J3-5v-UV0"/>
+                                        <constraint firstItem="ytH-hB-FXR" firstAttribute="top" secondItem="VTv-kV-D6v" secondAttribute="topMargin" constant="8" id="L5T-vj-7IL"/>
+                                        <constraint firstItem="ytH-hB-FXR" firstAttribute="leading" secondItem="VTv-kV-D6v" secondAttribute="leadingMargin" constant="8" id="Pq6-vv-Nn2"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ingredientName" destination="M12-9d-ETf" id="S2M-jK-LPd"/>
+                                    <outlet property="ingredientQuantity" destination="Pph-30-Jh0" id="qXO-5f-KPZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9M0-sM-Xbn" id="MFS-dZ-W71"/>
+                            <outlet property="delegate" destination="9M0-sM-Xbn" id="tqO-cE-qMo"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yNd-nY-A1g"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ULe-kg-06E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2940.579710144928" y="1203.3482142857142"/>
+        </scene>
+        <!--Instruction List-->
+        <scene sceneID="5iH-fX-8V6">
+            <objects>
+                <tableViewController id="qO3-fx-Sks" customClass="InstructionList" customModule="FetchDesertReward" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="26S-Ie-9DS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InstructionCell" rowHeight="80" id="dsb-IX-eSf" customClass="InstructionCell" customModule="FetchDesertReward" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dsb-IX-eSf" id="7XY-ah-NKf">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instruction" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3f-33-TiX">
+                                            <rect key="frame" x="28" y="19" width="358" height="42"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="M3f-33-TiX" firstAttribute="leading" secondItem="7XY-ah-NKf" secondAttribute="leadingMargin" constant="8" id="JDB-I0-cEV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="M3f-33-TiX" secondAttribute="trailing" constant="8" id="MOl-3y-iHJ"/>
+                                        <constraint firstItem="M3f-33-TiX" firstAttribute="top" secondItem="7XY-ah-NKf" secondAttribute="topMargin" constant="8" id="U9f-dV-Ca5"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="M3f-33-TiX" secondAttribute="bottom" constant="8" id="ovr-Tv-zTQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="instructionText" destination="M3f-33-TiX" id="uoa-SF-pWi"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qO3-fx-Sks" id="SIO-a9-DpU"/>
+                            <outlet property="delegate" destination="qO3-fx-Sks" id="LhO-V2-Mc0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="yP5-k2-y2N"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dhS-IR-aQ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2941" y="496"/>
         </scene>
         <!--Desserts Controller-->
         <scene sceneID="Ca0-7q-UHS">
