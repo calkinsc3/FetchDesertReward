@@ -14,7 +14,7 @@ class IngredientList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.estimatedRowHeight = 60.0
+        self.tableView.estimatedRowHeight = 55.0
         self.tableView.rowHeight = UITableView.automaticDimension
 
     }

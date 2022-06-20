@@ -10,6 +10,7 @@ import UIKit
 class DessertsController:  UITableViewController  {
     
     let desertViewModel = DessertsViewModel()
+    let pullToRefresh = UIRefreshControl()
     
     private var deserts : [Meal] = []
     private var selectedIndex: IndexPath?
@@ -35,6 +36,16 @@ class DessertsController:  UITableViewController  {
                 Log.networkLogger.error("Unable to retrieve deserts from API")
             }
         }
+    }
+    
+    private func setUpPullToRefresh() {
+        self.tableView.refreshControl = self.pullToRefresh
+        self.pullToRefresh.addTarget(self, action: #selector(DessertsController.refresh(sender:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(sender: AnyObject) {
+        self.gatherDeserts()
+        self.pullToRefresh.endRefreshing()
     }
     
     
