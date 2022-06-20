@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var dessertName: UILabel!
     @IBOutlet weak var ingredientsButton: UIButton!
+    @IBOutlet weak var dessertImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,10 @@ class ViewController: UIViewController {
             self.dessertName.text = dessert.strMeal
             //gather desert details
             self.gatherDessertDetails(withMealId: dessert.idMeal)
+            //gather dessert image
+            if let givenImageURL = self.givenDessert?.strMealThumb, let imageURL = URL(string: givenImageURL) {
+                self.gatherDessertImage(dessertImageURL: imageURL)
+            }
         }
     }
     
@@ -51,6 +56,22 @@ class ViewController: UIViewController {
                 
             } catch {
                 Log.networkLogger.error("Unable to retrieve desert details from API")
+            }
+        }
+    }
+    
+    func gatherDessertImage(dessertImageURL url: URL) {
+        Task {
+            let desertFetcher = DessertFetcher()
+            Task {
+                do {
+                    let desertImage = try await desertFetcher.getDesertImage(imageURL: url)
+                    // FIXME: weak reference will not work
+                    self.dessertImage.image = desertImage
+                    
+                } catch {
+                    Log.networkLogger.error("Unable to retrieve deserts from API")
+                }
             }
         }
     }

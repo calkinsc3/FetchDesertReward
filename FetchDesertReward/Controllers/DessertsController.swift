@@ -58,7 +58,8 @@ class DessertsController:  UITableViewController  {
         if self.deserts.indices.contains(indexPath.row) { //protect the subscript
             desertCell.desertName.text = self.deserts[indexPath.row].strMeal
             if let imageURL = URL(string: self.deserts[indexPath.row].strMealThumb) {
-                desertCell.imageURL = imageURL
+                desertCell.imageURL = imageURL //Need to set for prepareForReuse
+                desertCell.getDessertImage()
             }
         }
         

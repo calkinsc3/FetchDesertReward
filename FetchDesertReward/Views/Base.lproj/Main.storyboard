@@ -61,6 +61,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YBJ-cu-PeB"/>
                     <connections>
+                        <outlet property="dessertImage" destination="Sus-wE-WsM" id="Skh-Fl-hPp"/>
                         <outlet property="dessertName" destination="ne3-FP-nDY" id="Weg-vp-quq"/>
                         <outlet property="ingredientsButton" destination="LOM-Qb-egd" id="fdb-sd-hyw"/>
                         <segue destination="qO3-fx-Sks" kind="show" identifier="instructionsSegue" id="DP0-7s-nlx"/>
@@ -175,10 +176,10 @@
             </objects>
             <point key="canvasLocation" x="2941" y="496"/>
         </scene>
-        <!--Desserts Controller-->
+        <!--Desserts-->
         <scene sceneID="Ca0-7q-UHS">
             <objects>
-                <tableViewController id="gqm-oM-lwA" customClass="DessertsController" customModule="FetchDesertReward" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Desserts" id="gqm-oM-lwA" customClass="DessertsController" customModule="FetchDesertReward" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="UQR-vN-MpL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

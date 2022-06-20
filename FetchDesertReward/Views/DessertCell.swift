@@ -16,14 +16,14 @@ class DessertCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //self.getDessertImage()
+        self.getDessertImage()
     }
     
     override func prepareForReuse() {
-        //self.getDessertImage()
+        self.getDessertImage()
     }
     
-    private func getDessertImage() {
+    func getDessertImage() {
         
         guard let givenImageURL = self.imageURL else {
             return
@@ -34,9 +34,7 @@ class DessertCell: UITableViewCell {
             Task {
                 do {
                     let desertImage = try await desertFetcher.getDesertImage(imageURL: givenImageURL)
-                    // FIXME: weak reference will not work
-                    self.desertImage = UIImageView(image: desertImage)
-                    
+                    self.desertImage.image = desertImage
                 } catch {
                     Log.networkLogger.error("Unable to retrieve deserts from API")
                 }
