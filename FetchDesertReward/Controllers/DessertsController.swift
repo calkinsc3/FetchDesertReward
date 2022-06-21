@@ -23,6 +23,8 @@ class DessertsController:  UITableViewController  {
         
         self.gatherDeserts()
         
+        self.setUpPullToRefresh()
+        
     }
     
     // MARK: - Helpers
@@ -65,7 +67,6 @@ class DessertsController:  UITableViewController  {
             return UITableViewCell()
         }
         
-        //desertCell.desertName.text = self.desertViewModel.deserts.meals[indexPath.row].strMeal
         if self.deserts.indices.contains(indexPath.row) { //protect the subscript
             desertCell.desertName.text = self.deserts[indexPath.row].strMeal
             if let imageURL = URL(string: self.deserts[indexPath.row].strMealThumb) {

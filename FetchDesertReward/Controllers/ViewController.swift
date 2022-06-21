@@ -33,9 +33,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if let dessert = self.givenDessert {
+            
             self.dessertName.text = dessert.strMeal
+            
             //gather desert details
             self.gatherDessertDetails(withMealId: dessert.idMeal)
+            
             //gather dessert image
             if let givenImageURL = self.givenDessert?.strMealThumb, let imageURL = URL(string: givenImageURL) {
                 self.gatherDessertImage(dessertImageURL: imageURL)
@@ -49,7 +52,7 @@ class ViewController: UIViewController {
             do {
                 dessertDetail = try await self.desertDetailViewModel.getDesertDetails(withMealId: mealID)
                 self.dessertName.text = dessertDetail?.mealName
-                // FIXME: if the ingredient data is incorrect hide ingredient button
+                
                 if let ingredients = dessertDetail?.mealIngredients {
                     self.ingredientsButton.isHidden = ingredients.count == 0
                 }
@@ -66,7 +69,6 @@ class ViewController: UIViewController {
             Task {
                 do {
                     let desertImage = try await desertFetcher.getDesertImage(imageURL: url)
-                    // FIXME: weak reference will not work
                     self.dessertImage.image = desertImage
                     
                 } catch {
@@ -99,14 +101,12 @@ class ViewController: UIViewController {
             return
         }
 
-        
         if segue.identifier == "instructionsSegue",
             let instructionList = segue.destination as? InstructionList,
             let dessetInstrucitons = dessertDetail.mealInstructionsList {
             // set instruciton list
             instructionList.givenInstructions = dessetInstrucitons
         }
-        
         
         if segue.identifier == "ingredientsSegue",
            let ingredientList  = segue.destination as? IngredientList,
@@ -116,7 +116,4 @@ class ViewController: UIViewController {
             
         }
     }
-
-
 }
-

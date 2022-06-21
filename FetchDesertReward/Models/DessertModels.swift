@@ -27,7 +27,7 @@ struct Meal: Decodable {
     let strMealThumb: String
     let idMeal: String
     
-    //Only for use in prototypeing and SwiftUI Previews
+    //Only for use in prototyping and SwiftUI Previews
 #if DEBUG
     static let mealPlaceholder1 = Self(strMeal: "Apam balid", strMealThumb: "URL for Thumb", idMeal: "53049")
     static let mealPlaceholder2 = Self(strMeal: "Apple & Blackberry Crumble", strMealThumb: "URL for Thumb", idMeal: "52893")
@@ -42,8 +42,7 @@ struct MealDetail: Decodable {
     
     let meals: [[String: String?]]
     
-    
-    // TODO: Possibly move comp props to VM
+    // MARK: Name
     var mealName: String? {
         
         guard let givenMeal = self.meals.first, let mealName = givenMeal["strMeal"] else {
@@ -54,6 +53,7 @@ struct MealDetail: Decodable {
         return mealName ?? nil
     }
     
+    // MARK: Instructions
     var mealInstruction: String? {
         
         guard let givenMeal = self.meals.first,
@@ -77,7 +77,7 @@ struct MealDetail: Decodable {
         
     }
     
-    
+    // MARK: Ingredients
     var mealIngredients: [MealIngredients]? {
         
         guard let givenMeal = self.meals.first else {
@@ -97,21 +97,21 @@ struct MealDetail: Decodable {
             .filter({$0 != ""})
             .filter({$0 != " "})
         
-        // FIXME: Beaver Trail Issue
-        // some of the ingredients are not unique
-        // make them Sets to drop dups
-        // if they do not match return nil
+        //ingredients are keys, they need to be unique
+        //create a set from the array will drop dups
         let uniqueIngredients = Set(filteredIngredients)
-        //let uniqueMeasures = Set(filteredMesurements)
         
-        //make sure the ingredients are unique and the ingredient and measure count are the same
+        //make sure the ingredients and measures are the same count
         if filteredIngredients.count == uniqueIngredients.count && uniqueIngredients.count == filteredMesurements.count {
+            
+            //zip both arrays into a dictionary
             let completeInstructions = Dictionary(uniqueKeysWithValues: zip(filteredIngredients, filteredMesurements))
             
-            //map associated dictionary into structured model objects
+            //map dictionary into structured model objects
             return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)}).sorted(by: {$0.name < $1.name})
             
-        } else if filteredIngredients.count == filteredMesurements.count { // keys are not unique. they cannot be zipped. build manually
+        } else if filteredIngredients.count == filteredMesurements.count {
+            // keys are not unique. they cannot be zipped. build manually
             
             var returnedIngredients: [MealIngredients] = []
             let namedIngredients = filteredIngredients.map({MealIngredients(name: $0, quantity: "")})
@@ -139,7 +139,7 @@ struct MealDetail: Decodable {
     }
 }
 
-
+// MARK: Ingredient Struct
 struct MealIngredients: CustomStringConvertible {
     var name: String
     var quantity: String
