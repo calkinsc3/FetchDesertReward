@@ -13,12 +13,12 @@ struct Desserts: Decodable {
     let meals: [Meal]
     
     //Only for use in prototypeing and SwiftUI Previews
-    #if DEBUG
+#if DEBUG
     static let desertPlaceHolder = Self(meals: [Meal.mealPlaceholder1,
                                                 Meal.mealPlaceholder2,
                                                 Meal.mealPlaceholder3,
                                                 Meal.mealPlaceholder4])
-    #endif
+#endif
 }
 
 // MARK: - Meal
@@ -28,12 +28,12 @@ struct Meal: Decodable {
     let idMeal: String
     
     //Only for use in prototypeing and SwiftUI Previews
-    #if DEBUG
+#if DEBUG
     static let mealPlaceholder1 = Self(strMeal: "Apam balid", strMealThumb: "URL for Thumb", idMeal: "53049")
     static let mealPlaceholder2 = Self(strMeal: "Apple & Blackberry Crumble", strMealThumb: "URL for Thumb", idMeal: "52893")
     static let mealPlaceholder3 = Self(strMeal: "Apple Frangipan Tart", strMealThumb: "URL for Thumb", idMeal: "52768")
     static let mealPlaceholder4 = Self(strMeal: "Bakewell tart", strMealThumb: "URL for Thumb", idMeal: "52767")
-    #endif
+#endif
 }
 
 
@@ -57,7 +57,7 @@ struct MealDetail: Decodable {
     var mealInstruction: String? {
         
         guard let givenMeal = self.meals.first,
-                let mealInstruction = givenMeal["strInstructions"] else {
+              let mealInstruction = givenMeal["strInstructions"] else {
             Log.modelLogger.debug("Unable to unwrap meal or get meal instructions")
             return nil
         }
@@ -87,30 +87,41 @@ struct MealDetail: Decodable {
         
         //filter the ingredients list
         let filteredIngredients = givenMeal.filter({$0.key.contains("strIngredient")})
-                                    .sorted(by: {$0.key < $1.key})
-                                    .compactMap({$0.value}) //remove nil values
-                                    .filter({$0 != ""}) // remove empty strings
+            .sorted(by: {$0.key < $1.key})
+            .compactMap({$0.value}) //remove nil values
+            .filter({$0 != ""}) // remove empty strings
         //filter the quantity list
         let filteredMesurements = givenMeal.filter({$0.key.contains("strMeasure")})
-                                    .sorted(by: {$0.key < $1.key})
-                                    .compactMap({$0.value})
-                                    .filter({$0 != ""})
-                                    .filter({$0 != " "})
+            .sorted(by: {$0.key < $1.key})
+            .compactMap({$0.value})
+            .filter({$0 != ""})
+            .filter({$0 != " "})
         
         // FIXME: Beaver Trail Issue
         // some of the ingredients are not unique
         // make them Sets to drop dups
         // if they do not match return nil
         let uniqueIngredients = Set(filteredIngredients)
-        let uniqueMeasures = Set(filteredMesurements)
+        //let uniqueMeasures = Set(filteredMesurements)
         
-        if filteredIngredients.count == uniqueIngredients.count && uniqueMeasures.count == filteredMesurements.count {
+        //make sure the ingredients are unique and the ingredient and measure count are the same
+        if filteredIngredients.count == uniqueIngredients.count && uniqueIngredients.count == filteredMesurements.count {
             let completeInstructions = Dictionary(uniqueKeysWithValues: zip(filteredIngredients, filteredMesurements))
             
             //map associated dictionary into structured model objects
             return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)}).sorted(by: {$0.name < $1.name})
-        } else {
-            // TODO: find dups 
+            
+        } else { // keys are not unique. they cannot be zipped. build manually
+            
+            let mealID = givenMeal["idMeal"] ?? ""
+            let mealName = givenMeal["strMeal"] ?? ""
+            print("----------------------------")
+            print("\(mealID ?? "")")
+            print(" \(mealName ?? "")")
+            filteredIngredients.map({print($0)})
+            filteredMesurements.map({print($0)})
+            print("uniqueIngredients.count-\(uniqueIngredients.count)")
+            print("filteredMesurements.count-\(filteredMesurements.count)")
             return nil
         }
         
@@ -130,8 +141,8 @@ struct MealDetail: Decodable {
 
 
 struct MealIngredients: CustomStringConvertible {
-    let name: String
-    let quantity: String
+    var name: String
+    var quantity: String
     
     var description: String {
         "\(name) : \(quantity)"
