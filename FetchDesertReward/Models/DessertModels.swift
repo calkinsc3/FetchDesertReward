@@ -111,20 +111,20 @@ struct MealDetail: Decodable {
             //map associated dictionary into structured model objects
             return completeInstructions.map({MealIngredients(name: $0.key, quantity: $0.value)}).sorted(by: {$0.name < $1.name})
             
-        } else { // keys are not unique. they cannot be zipped. build manually
+        } else if filteredIngredients.count == filteredMesurements.count { // keys are not unique. they cannot be zipped. build manually
             
-            let mealID = givenMeal["idMeal"] ?? ""
-            let mealName = givenMeal["strMeal"] ?? ""
-            print("----------------------------")
-            print("\(mealID ?? "")")
-            print(" \(mealName ?? "")")
-            filteredIngredients.map({print($0)})
-            filteredMesurements.map({print($0)})
-            print("uniqueIngredients.count-\(uniqueIngredients.count)")
-            print("filteredMesurements.count-\(filteredMesurements.count)")
+            var returnedIngredients: [MealIngredients] = []
+            let namedIngredients = filteredIngredients.map({MealIngredients(name: $0, quantity: "")})
+            
+            for (index, ingredient) in namedIngredients.enumerated() {
+                returnedIngredients.append(MealIngredients(name: ingredient.name, quantity: filteredMesurements[index]))
+            }
+            
+            return returnedIngredients
+            
+        } else {
             return nil
         }
-        
         
     }
     
