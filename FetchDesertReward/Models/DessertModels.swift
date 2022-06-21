@@ -9,7 +9,7 @@ import Foundation
 
 
 // MARK: - Deserts
-struct Desserts: Decodable {
+struct Desserts: Decodable, Equatable, Hashable {
     let meals: [Meal]
     
     //Only for use in prototypeing and SwiftUI Previews
@@ -22,17 +22,33 @@ struct Desserts: Decodable {
 }
 
 // MARK: - Meal
-struct Meal: Decodable {
+struct Meal: Decodable, Hashable, Equatable, Identifiable {
     let strMeal: String
     let strMealThumb: String
     let idMeal: String
     
+    var id: String {
+        self.idMeal
+    }
+    
+    var thumbNailURL: URL? {
+        URL(string: self.strMealThumb)
+    }
+    
     //Only for use in prototyping and SwiftUI Previews
 #if DEBUG
-    static let mealPlaceholder1 = Self(strMeal: "Apam balid", strMealThumb: "URL for Thumb", idMeal: "53049")
-    static let mealPlaceholder2 = Self(strMeal: "Apple & Blackberry Crumble", strMealThumb: "URL for Thumb", idMeal: "52893")
-    static let mealPlaceholder3 = Self(strMeal: "Apple Frangipan Tart", strMealThumb: "URL for Thumb", idMeal: "52768")
-    static let mealPlaceholder4 = Self(strMeal: "Bakewell tart", strMealThumb: "URL for Thumb", idMeal: "52767")
+    static let mealPlaceholder1 = Self(strMeal: "Apam balid",
+                                       strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg",
+                                       idMeal: "53049")
+    static let mealPlaceholder2 = Self(strMeal: "Apple & Blackberry Crumble",
+                                       strMealThumb: "https://www.themealdb.com/images/media/meals/xvsurr1511719182.jpg",
+                                       idMeal: "52893")
+    static let mealPlaceholder3 = Self(strMeal: "Apple Frangipan Tart",
+                                       strMealThumb: "https://www.themealdb.com/images/media/meals/wxywrq1468235067.jpg",
+                                       idMeal: "52768")
+    static let mealPlaceholder4 = Self(strMeal: "Bakewell tart",
+                                       strMealThumb: "https://www.themealdb.com/images/media/meals/wyrqqq1468233628.jpg",
+                                       idMeal: "52767")
 #endif
 }
 
@@ -140,9 +156,11 @@ struct MealDetail: Decodable {
 }
 
 // MARK: Ingredient Struct
-struct MealIngredients: CustomStringConvertible {
+struct MealIngredients: CustomStringConvertible, Hashable, Equatable, Identifiable {
     var name: String
     var quantity: String
+    
+    var id: String { UUID().uuidString }
     
     var description: String {
         "\(name) : \(quantity)"
