@@ -102,4 +102,9 @@ class DessertsController:  UITableViewController  {
         }
     }
     
+    @IBSegueAction func ingredientListViewSegue(_ coder: NSCoder) -> UIViewController? {
+        return DessertListHosting(coder: coder, rootView: DessertListView(givenDesserts: self.deserts))
+    }
+    
+    
 }

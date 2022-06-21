@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+enum CurrentSheetShowing {
+    case instructions, ingredients
+    
+    init() {
+        self = .instructions
+    }
+}
+
 struct DessertDetailView: View {
     
-    @State private var showingInstructions = false
-    @State private var showingIngredients = false
+    @State private var showingDetailsSheet = false
+    @State private var currentSheet = CurrentSheetShowing()
     
     var body: some View {
         VStack(alignment: .center, spacing: 20) {
@@ -22,31 +30,51 @@ struct DessertDetailView: View {
                 .font(.headline)
             
             Button {
-                self.showingInstructions = true
+                self.showingDetailsSheet = true
+                self.currentSheet = .instructions
             } label: {
                 Label("Baking Instructions", systemImage: "list.bullet")
             }
             Button {
-                self.showingIngredients = true
+                self.showingDetailsSheet = true
+                self.currentSheet = .ingredients
             } label: {
                 Label("Baking Ingredients", systemImage: "list.dash.header.rectangle")
             }
-
             Spacer()
-            
         }
+        .sheet(isPresented: $showingDetailsSheet) {
+            self.showingDetailsSheet = false
+        } content: {
+            if self.currentSheet == .instructions {
+                InstructionsList(instructions: ["Instruction1", "Instruction2", "Instruction3", "Instruction4", "Instruction5"], showSheet: $showingDetailsSheet)
+            }
+            if self.currentSheet == .ingredients {
+                IngredientListView(ingredients: [MealIngredients(name: "Sugar", quantity: "10 cups"), MealIngredients(name: "Flour", quantity: "5 cups"), MealIngredients(name: "Oil", quantity: "1 cup")], dismiss: $showingDetailsSheet)
+            }
+        }
+
     }
 }
 
 struct InstructionsList: View {
     
     let instructions: [String]
+    @Binding var showSheet: Bool
     
     var body: some View {
         
-        List(self.instructions, id: \.self) { instruction in
-            Text(instruction)
-                .font(.body)
+        VStack {
+            Button {
+                self.showSheet = false
+            } label: {
+                Image(systemName: "xmark")
+            }
+
+            List(self.instructions, id: \.self) { instruction in
+                Text(instruction)
+                    .font(.body)
+            }
         }
     }
 }
@@ -54,10 +82,19 @@ struct InstructionsList: View {
 struct IngredientListView: View {
     
     let ingredients: [MealIngredients]
+    @Binding var dismiss: Bool
     
     var body: some View {
-        List(self.ingredients) { ingredient in
-            IngredientView(ingredient: ingredient)
+        
+        VStack {
+            Button {
+                self.dismiss = false
+            } label: {
+                Image(systemName: "xmark")
+            }
+            List(self.ingredients) { ingredient in
+                IngredientView(ingredient: ingredient)
+            }
         }
     }
 }

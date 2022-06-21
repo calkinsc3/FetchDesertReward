@@ -9,14 +9,27 @@ import SwiftUI
 
 struct DessertListView: View {
     
-    @StateObject var dessertListViewModel = DessertListViewModel()
+    @Environment(\.presentationMode) var prsentationMode
+    
+    //@StateObject var dessertListViewModel = DessertListViewModel()
+    var givenDesserts: [Meal] = Desserts.desertPlaceHolder.meals
     
     var body: some View {
         NavigationView {
-            List(self.dessertListViewModel.dessertList){ dessert in
-                DessertCellView(givenDessert: dessert)
+            List(givenDesserts){ dessert in
+                NavigationLink(destination: DessertDetailView()) {
+                    DessertCellView(givenDessert: dessert)
+                }
             }
             .navigationTitle("Desserts")
+            .toolbar {
+                Button {
+                    prsentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+
+            }
         }
         
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3B505C28623D8A00F34203 /* DessertListHosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B505B28623D8A00F34203 /* DessertListHosting.swift */; };
 		FA6396D7285F5BA700A08D29 /* DesertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6396D6285F5BA700A08D29 /* DesertDetailViewModel.swift */; };
 		FA663719286092FE00F79737 /* InstructionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA663718286092FE00F79737 /* InstructionList.swift */; };
 		FA66371B2860930E00F79737 /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66371A2860930E00F79737 /* IngredientList.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA3B505B28623D8A00F34203 /* DessertListHosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListHosting.swift; sourceTree = "<group>"; };
 		FA6396D6285F5BA700A08D29 /* DesertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertDetailViewModel.swift; sourceTree = "<group>"; };
 		FA663718286092FE00F79737 /* InstructionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionList.swift; sourceTree = "<group>"; };
 		FA66371A2860930E00F79737 /* IngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientList.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				FA8D9024285D053D007E8FE8 /* DessertsController.swift */,
 				FA663718286092FE00F79737 /* InstructionList.swift */,
 				FA66371A2860930E00F79737 /* IngredientList.swift */,
+				FA3B505B28623D8A00F34203 /* DessertListHosting.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				FA8D8FE1285CD3B1007E8FE8 /* SceneDelegate.swift in Sources */,
 				FA663719286092FE00F79737 /* InstructionList.swift in Sources */,
 				FA6396D7285F5BA700A08D29 /* DesertDetailViewModel.swift in Sources */,
+				FA3B505C28623D8A00F34203 /* DessertListHosting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
