@@ -61,7 +61,7 @@ struct DessertDetailView: View {
                 InstructionsList(instructions: self.dessertDetailViewModel.desertDetail?.mealInstructionsList ?? [], showSheet: $showingDetailsSheet)
             }
             if self.currentSheet == .ingredients {
-                IngredientListView(ingredients: self.dessertDetailViewModel.desertDetail?.mealIngredients ?? [], dismiss: $showingDetailsSheet)
+                IngredientListView(ingredients: self.dessertDetailViewModel.desertDetail?.mealIngredients ?? [], showSheet: $showingDetailsSheet)
             }
         }
         .task {
@@ -90,7 +90,6 @@ struct InstructionsList: View {
             }
             .padding()
             
-            
             List(self.instructions, id: \.self) { instruction in
                 Text(instruction)
                     .font(.body)
@@ -104,7 +103,7 @@ struct InstructionsList: View {
 struct IngredientListView: View {
     
     let ingredients: [MealIngredients]
-    @Binding var dismiss: Bool
+    @Binding var showSheet: Bool
     
     var body: some View {
         
@@ -112,7 +111,7 @@ struct IngredientListView: View {
             HStack {
                 Spacer()
                 Button {
-                    self.dismiss = false
+                    self.showSheet = false
                 } label: {
                     Image(systemName: "xmark")
                 }
@@ -141,12 +140,10 @@ struct IngredientView: View {
                 .font(.body)
         }
     }
-    
 }
 
 
 // MARK: - Previews
-
 struct InstructionsListPreview: View {
     var body: some View {
         InstructionsList(instructions: ["Instruction1", "Instruction2", "Instruction3", "Instruction4", "Instruction5"], showSheet: .constant(true))
@@ -155,7 +152,7 @@ struct InstructionsListPreview: View {
 
 struct IngredientsListPreview: View {
     var body: some View {
-        IngredientListView(ingredients: [MealIngredients(name: "Sugar", quantity: "10 cups"), MealIngredients(name: "Flour", quantity: "5 cups"), MealIngredients(name: "Oil", quantity: "1 cup")], dismiss: .constant(true))
+        IngredientListView(ingredients: [MealIngredients(name: "Sugar", quantity: "10 cups"), MealIngredients(name: "Flour", quantity: "5 cups"), MealIngredients(name: "Oil", quantity: "1 cup")], showSheet: .constant(true))
     }
 }
 
@@ -166,6 +163,5 @@ struct DessertDetailView_Previews: PreviewProvider {
             InstructionsListPreview()
             IngredientsListPreview()
         }
-        
     }
 }
