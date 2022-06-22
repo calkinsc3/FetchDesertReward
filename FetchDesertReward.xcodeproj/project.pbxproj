@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA3B505C28623D8A00F34203 /* DessertListHosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B505B28623D8A00F34203 /* DessertListHosting.swift */; };
 		FA6396D7285F5BA700A08D29 /* DesertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6396D6285F5BA700A08D29 /* DesertDetailViewModel.swift */; };
 		FA663719286092FE00F79737 /* InstructionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA663718286092FE00F79737 /* InstructionList.swift */; };
 		FA66371B2860930E00F79737 /* IngredientList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA66371A2860930E00F79737 /* IngredientList.swift */; };
@@ -30,6 +31,9 @@
 		FA8D9023285D03B1007E8FE8 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9022285D03B1007E8FE8 /* Logs.swift */; };
 		FA8D9025285D053D007E8FE8 /* DessertsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9024285D053D007E8FE8 /* DessertsController.swift */; };
 		FA8D9027285D0C66007E8FE8 /* DessertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D9026285D0C66007E8FE8 /* DessertCell.swift */; };
+		FAEE48D62862121000449DE8 /* DessertListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE48D52862121000449DE8 /* DessertListView.swift */; };
+		FAEE48D828621B7D00449DE8 /* DessertDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE48D728621B7D00449DE8 /* DessertDetailsViewModel.swift */; };
+		FAEE48DA28622A2600449DE8 /* DessertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE48D928622A2600449DE8 /* DessertDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA3B505B28623D8A00F34203 /* DessertListHosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListHosting.swift; sourceTree = "<group>"; };
 		FA6396D6285F5BA700A08D29 /* DesertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesertDetailViewModel.swift; sourceTree = "<group>"; };
 		FA663718286092FE00F79737 /* InstructionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionList.swift; sourceTree = "<group>"; };
 		FA66371A2860930E00F79737 /* IngredientList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientList.swift; sourceTree = "<group>"; };
@@ -77,6 +82,9 @@
 		FA8D9022285D03B1007E8FE8 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
 		FA8D9024285D053D007E8FE8 /* DessertsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertsController.swift; sourceTree = "<group>"; };
 		FA8D9026285D0C66007E8FE8 /* DessertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertCell.swift; sourceTree = "<group>"; };
+		FAEE48D52862121000449DE8 /* DessertListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListView.swift; sourceTree = "<group>"; };
+		FAEE48D728621B7D00449DE8 /* DessertDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailsViewModel.swift; sourceTree = "<group>"; };
+		FAEE48D928622A2600449DE8 /* DessertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +191,7 @@
 				FA8D9024285D053D007E8FE8 /* DessertsController.swift */,
 				FA663718286092FE00F79737 /* InstructionList.swift */,
 				FA66371A2860930E00F79737 /* IngredientList.swift */,
+				FA3B505B28623D8A00F34203 /* DessertListHosting.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,6 +204,8 @@
 				FA8D9026285D0C66007E8FE8 /* DessertCell.swift */,
 				FA66371C2860937E00F79737 /* InstructionCell.swift */,
 				FA66371E2860939300F79737 /* IngredientCell.swift */,
+				FAEE48D52862121000449DE8 /* DessertListView.swift */,
+				FAEE48D928622A2600449DE8 /* DessertDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 			children = (
 				FA8D901F285D02E8007E8FE8 /* DessertsViewModel.swift */,
 				FA6396D6285F5BA700A08D29 /* DesertDetailViewModel.swift */,
+				FAEE48D728621B7D00449DE8 /* DessertDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -367,11 +379,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8D900F285CD450007E8FE8 /* DessertModels.swift in Sources */,
+				FAEE48D62862121000449DE8 /* DessertListView.swift in Sources */,
+				FAEE48D828621B7D00449DE8 /* DessertDetailsViewModel.swift in Sources */,
 				FA8D9025285D053D007E8FE8 /* DessertsController.swift in Sources */,
 				FA8D8FE3285CD3B1007E8FE8 /* ViewController.swift in Sources */,
 				FA8D9023285D03B1007E8FE8 /* Logs.swift in Sources */,
 				FA8D8FDF285CD3B1007E8FE8 /* AppDelegate.swift in Sources */,
 				FA8D9015285CED15007E8FE8 /* DessertFetcher.swift in Sources */,
+				FAEE48DA28622A2600449DE8 /* DessertDetailView.swift in Sources */,
 				FA66371D2860937E00F79737 /* InstructionCell.swift in Sources */,
 				FA66371B2860930E00F79737 /* IngredientList.swift in Sources */,
 				FA8D9020285D02E8007E8FE8 /* DessertsViewModel.swift in Sources */,
@@ -381,6 +396,7 @@
 				FA8D8FE1285CD3B1007E8FE8 /* SceneDelegate.swift in Sources */,
 				FA663719286092FE00F79737 /* InstructionList.swift in Sources */,
 				FA6396D7285F5BA700A08D29 /* DesertDetailViewModel.swift in Sources */,
+				FA3B505C28623D8A00F34203 /* DessertListHosting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

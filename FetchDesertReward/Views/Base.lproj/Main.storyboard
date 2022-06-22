@@ -8,6 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Hosting Controller-->
+        <scene sceneID="i5P-IE-xpG">
+            <objects>
+                <hostingController id="MFb-fX-dUm" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Omb-ub-77W"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OgG-3z-2jB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1928" y="143"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -232,7 +242,13 @@
                             <outlet property="delegate" destination="gqm-oM-lwA" id="CPL-lF-4tl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="S47-wl-nem"/>
+                    <navigationItem key="navigationItem" title="Desserts" id="ZZk-kC-qJi">
+                        <barButtonItem key="rightBarButtonItem" title="SwiftUI" id="iWC-ll-VNk">
+                            <connections>
+                                <segue destination="MFb-fX-dUm" kind="showDetail" destinationCreationSelector="ingredientListViewSegue:" id="xnA-k1-pG9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="desertDetailsSegue" id="Fz3-CV-MLC"/>
                     </connections>
