@@ -11,13 +11,12 @@ struct DessertListView: View {
     
     @Environment(\.presentationMode) var prsentationMode
     
-    //@StateObject var dessertListViewModel = DessertListViewModel()
     var givenDesserts: [Meal] = Desserts.desertPlaceHolder.meals
     
     var body: some View {
         NavigationView {
             List(givenDesserts){ dessert in
-                NavigationLink(destination: DessertDetailView()) {
+                NavigationLink(destination: DessertDetailView(dessert: dessert)) {
                     DessertCellView(givenDessert: dessert)
                 }
             }
