@@ -27,10 +27,8 @@ struct DessertListView: View {
                 } label: {
                     Image(systemName: "xmark")
                 }
-
             }
         }
-        
     }
 }
 

@@ -37,7 +37,6 @@ struct DessertDetailView: View {
             }
             
             // MARK: Instrucitons
-            
             Button {
                 self.showingDetailsSheet = true
                 self.currentSheet = .instructions
@@ -45,6 +44,7 @@ struct DessertDetailView: View {
                 Label("Baking Instructions", systemImage: "list.bullet")
             }
             
+            // MARK: Ingredients
             Button {
                 self.showingDetailsSheet = true
                 self.currentSheet = .ingredients
