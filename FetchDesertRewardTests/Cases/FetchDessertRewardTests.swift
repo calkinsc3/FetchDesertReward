@@ -127,20 +127,7 @@ class FetchDesertRewardTests: XCTestCase {
         
     }
     
-    // MARK: - Helper Functions
-    private func createPath(forJSONFile: String) -> URL {
-        
-        
-        let jsonURL = URL(
-            fileURLWithPath: forJSONFile,
-            relativeTo: FileManager.documentDirectoryURL?.appendingPathComponent("\(forJSONFile)")
-        ).appendingPathExtension("json")
-        
-        print("json path for \(forJSONFile) = \(jsonURL.absoluteString)")
-        
-        return jsonURL
-    }
-    
+    // MARK: - Helper Functions    
     private func getMockData(forResource: String) -> Data? {
         
         //This is included in they myamfam target becasue it will be used the app.
