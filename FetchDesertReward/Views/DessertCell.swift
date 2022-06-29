@@ -22,7 +22,7 @@ class DessertCell: UITableViewCell {
     override func prepareForReuse() {
         self.getDessertImage()
     }
-    // TODO: Make sure main thread response
+    
     @MainActor
     func getDessertImage() {
         
