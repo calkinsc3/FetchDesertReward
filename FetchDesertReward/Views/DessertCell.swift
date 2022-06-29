@@ -23,7 +23,6 @@ class DessertCell: UITableViewCell {
         self.getDessertImage()
     }
     
-    @MainActor
     func getDessertImage() {
         
         guard let givenImageURL = self.imageURL else {

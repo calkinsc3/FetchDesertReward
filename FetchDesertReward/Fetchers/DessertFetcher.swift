@@ -125,7 +125,7 @@ struct MEAL_API {
     #if DEBUG
     static let version = "v1/1"
     #else
-    static let version = "v2/dfjkdljalk"
+    static let version = "v2/9973533"
     #endif
     static let basepath = "api/json/\(version)"
     
