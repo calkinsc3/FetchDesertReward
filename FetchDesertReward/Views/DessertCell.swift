@@ -31,15 +31,14 @@ class DessertCell: UITableViewCell {
         
         Task {
             let desertFetcher = DessertFetcher()
-            Task {
-                do {
-                    let desertImage = try await desertFetcher.getDesertImage(imageURL: givenImageURL)
-                    self.desertImage.image = desertImage
-                } catch {
-                    Log.networkLogger.error("Unable to retrieve deserts from API")
-                }
+            
+            do {
+                let desertImage = try await desertFetcher.getDesertImage(imageURL: givenImageURL)
+                self.desertImage.image = desertImage
+            } catch {
+                Log.networkLogger.error("Unable to retrieve deserts from API")
             }
         }
     }
-
+    
 }

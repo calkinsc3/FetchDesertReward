@@ -122,7 +122,11 @@ private extension DessertFetcher {
 struct MEAL_API {
     static let schema = "https"
     static let host = "www.themealdb.com"
+    #if DEBUG
     static let version = "v1/1"
+    #else
+    static let version = "v2/9973533"
+    #endif
     static let basepath = "api/json/\(version)"
     
     static let desertPath = "/\(basepath)/filter.php"

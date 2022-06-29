@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     func gatherDessertImage(dessertImageURL url: URL) {
         Task {
             let desertFetcher = DessertFetcher()
-            Task {
+            //Task {
                 do {
                     let desertImage = try await desertFetcher.getDesertImage(imageURL: url)
                     self.dessertImage.image = desertImage
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
                 } catch {
                     Log.networkLogger.error("Unable to retrieve deserts from API")
                 }
-            }
+           // }
         }
     }
     
