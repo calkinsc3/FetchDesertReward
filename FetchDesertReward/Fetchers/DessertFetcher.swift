@@ -11,13 +11,8 @@ import UIKit
 
 final class DessertFetcher {
     
-    private var session: URLSession
+    var session = URLSession(configuration: .default)
     
-    init() {
-        
-        self.session = URLSession(configuration: .default)
-        
-    }
     
     // MARK: - Get Deserts from API
     func fetchDeserts() async throws -> Desserts {
