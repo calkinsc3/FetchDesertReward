@@ -13,7 +13,6 @@ final class DessertFetcher {
     
     var session = URLSession(configuration: .default)
     
-    
     // MARK: - Get Deserts from API
     func fetchDeserts() async throws -> Desserts {
         

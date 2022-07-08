@@ -8,10 +8,25 @@
 import Foundation
 @testable import FetchDesertReward
 
+enum DessertTestType {
+    case dessertList, dessertDetail, dessertImage
+}
+
 ///Used to intercept and mock async network calls
 class TestURLProtocol: URLProtocol {
     
     static var lastRequest: URLRequest?
+    
+    //set params for mock file
+    var dessertTestType: DessertTestType = .dessertList
+    var mockFileName: String {
+        switch self.dessertTestType {
+        case .dessertList: return "Desserts"
+        case .dessertDetail: return "Meals"
+        case .dessertImage: return "ImageFile"
+        }
+    }
+    
     
     // MARK: URLProtocol
     override class func canInit(with request: URLRequest) -> Bool {
@@ -28,9 +43,9 @@ class TestURLProtocol: URLProtocol {
         guard let client = client,
               let url = request.url,
               let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil),
-              let desertModelData = getMockData(forResource: "Desserts")  else {
+              let desertModelData = getMockData(forResource: self.mockFileName)  else {
             
-            fatalError("Client or URL is missing.")
+            fatalError("Client, URL, Response or model data is missing.")
         }
         
         //load the client - mock behavior
