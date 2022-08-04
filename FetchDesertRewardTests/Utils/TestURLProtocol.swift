@@ -13,7 +13,7 @@ enum DessertTestType {
 }
 
 ///Used to intercept and mock async network calls
-class TestURLProtocol: URLProtocol {
+final class TestURLProtocol: URLProtocol {
     
     static var lastRequest: URLRequest?
     
