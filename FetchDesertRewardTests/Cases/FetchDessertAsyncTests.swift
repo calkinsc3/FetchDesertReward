@@ -45,11 +45,10 @@ final class FetchDessertAsyncTests: XCTestCase {
         
         XCTAssertEqual(dessert.meals.first?["idMeal"], "53049")
         XCTAssertEqual(dessert.meals.first?["strMeal"], "Apam balik")
-        //XCTAssertEqual(dessert.meals.first?["strArea"], "Malaysian")
         
         let request = try XCTUnwrap(TestURLProtocol.lastRequest)
         XCTAssertEqual(request.url?.absoluteString, "https://www.themealdb.com/api/json/v1/1/lookup.php?i=53049")
-        
+        XCTAssertEqual(request.httpMethod, "GET")
         
     }
     

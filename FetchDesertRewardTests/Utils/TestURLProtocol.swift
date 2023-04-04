@@ -27,7 +27,6 @@ final class TestURLProtocol: URLProtocol {
         }
     }
     
-    
     // MARK: URLProtocol
     override class func canInit(with request: URLRequest) -> Bool {
         return true
@@ -36,6 +35,7 @@ final class TestURLProtocol: URLProtocol {
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
+    
     
     //mock the start of loading
     override func startLoading() {
