@@ -12,14 +12,18 @@ struct DessertListView: View {
     @Environment(\.presentationMode) var prsentationMode
     
     var givenDesserts: [Meal] = Desserts.desertPlaceHolder.meals
+    @State private var paths: [Meal] = Desserts.desertPlaceHolder.meals
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $paths) {
             List(givenDesserts){ dessert in
-                NavigationLink(destination: DessertDetailView(dessert: dessert)) {
+                NavigationLink(value: dessert) {
                     DessertCellView(givenDessert: dessert)
                 }
             }
+            .navigationDestination(for: Meal.self, destination: { dessert in
+                DessertDetailView(dessert: dessert)
+            })
             .navigationTitle("Desserts")
             .toolbar {
                 Button {
