@@ -82,34 +82,22 @@ final class DessertFetcher {
 private extension DessertFetcher {
     
     func makeComponentsForDesert() -> URLComponents {
-        
         var components = URLComponents()
-        
         components.scheme = MEAL_API.schema
         components.host = MEAL_API.host
         components.path = MEAL_API.desertPath
         components.queryItems = [URLQueryItem(name: "c", value: "Dessert")] //?c=Dessert
-        
         return components
-    
     }
     
     func makeComponentsForDesertDetail(mailID id: String) -> URLComponents {
-        
         var components = URLComponents()
-        
         components.scheme = MEAL_API.schema
         components.host = MEAL_API.host
         components.path = MEAL_API.desertDetailPath
         components.queryItems = [URLQueryItem(name: "i", value: id)]
-        
         return components
-        
     }
-    
-    
-    
-    
 }
 
 // MARK: - Endpoint Comps
