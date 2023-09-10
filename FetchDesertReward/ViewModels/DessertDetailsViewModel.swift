@@ -10,7 +10,7 @@ import os
 
 final class DessertDetailsViewModel: ObservableObject {
     
-    @Published var desertDetail: MealDetail?
+    var desertDetail: MealDetail?
     
     @MainActor
     func getDesertDetails(withMealId mealID: String) async {
