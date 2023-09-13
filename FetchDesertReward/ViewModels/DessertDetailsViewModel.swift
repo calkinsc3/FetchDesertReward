@@ -8,9 +8,9 @@
 import Foundation
 import os
 
-final class DessertDetailsViewModel: ObservableObject {
+@Observable final class DessertDetailsViewModel {
     
-    @Published var desertDetail: MealDetail?
+    var desertDetail: MealDetail?
     
     @MainActor
     func getDesertDetails(withMealId mealID: String) async {

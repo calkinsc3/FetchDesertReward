@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-final class DessertFetcher {
+actor DessertFetcher {
     
     var session = URLSession(configuration: .default)
     
@@ -73,10 +73,7 @@ final class DessertFetcher {
         return givenImage
         
     }
-    
 }
-
-
 
 // MARK: - Endpoint Builder
 private extension DessertFetcher {
@@ -113,7 +110,5 @@ struct MEAL_API {
     
     static let desertPath = "/\(basepath)/filter.php"
     static let desertDetailPath = "/\(basepath)/lookup.php"
-    
-    
 }
 

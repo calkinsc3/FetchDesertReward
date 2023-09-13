@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DessertsViewModel {
+actor DessertsViewModel {
     
     func getDeserts() async throws -> Desserts {
         let desertFetcher = DessertFetcher()
