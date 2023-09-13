@@ -20,7 +20,7 @@ struct DessertDetailView: View {
     
     let dessert: Meal
     
-    @StateObject var dessertDetailViewModel = DessertDetailsViewModel()
+    var dessertDetailViewModel = DessertDetailsViewModel()
     
     @State private var showingDetailsSheet = false
     @State private var currentSheet = CurrentSheetShowing()

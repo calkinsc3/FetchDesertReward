@@ -8,7 +8,7 @@
 import Foundation
 import os
 
-final class DessertDetailsViewModel: ObservableObject {
+@Observable final class DessertDetailsViewModel {
     
     var desertDetail: MealDetail?
     
