@@ -15,7 +15,7 @@ struct DessertListView: View {
     @State private var paths: [Meal] = Desserts.desertPlaceHolder.meals
     
     var body: some View {
-        NavigationStack(path: $paths) {
+        NavigationStack {
             List(givenDesserts){ dessert in
                 NavigationLink(value: dessert) {
                     DessertCellView(givenDessert: dessert)

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-actor DessertFetcher {
+final class DessertFetcher {
     
     var session = URLSession(configuration: .default)
     

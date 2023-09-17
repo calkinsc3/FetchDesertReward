@@ -78,7 +78,6 @@ struct InstructionsList: View {
     @Binding var showSheet: Bool
     
     var body: some View {
-        
         VStack {
             HStack {
                 Spacer()
@@ -89,7 +88,6 @@ struct InstructionsList: View {
                 }
             }
             .padding()
-            
             List(self.instructions, id: \.self) { instruction in
                 Text(instruction)
                     .font(.body)
